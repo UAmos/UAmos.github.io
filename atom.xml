@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-29T13:05:44.125Z</updated>
+  <updated>2019-12-30T14:08:24.817Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Fescar 分布式框架原理</title>
+    <link href="http://yoursite.com/2019/12/30/Fescar-%E5%88%86%E5%B8%83%E5%BC%8F%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2019/12/30/Fescar-%E5%88%86%E5%B8%83%E5%BC%8F%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86/</id>
+    <published>2019-12-30T13:26:28.000Z</published>
+    <updated>2019-12-30T14:08:24.817Z</updated>
+    
+    <content type="html"><![CDATA[<p>FESCAR（Fast &amp; Easy Commit And Rollback） 是一个用于微服务架构的分布式事务解决方案，它的特点是高性能且易于使用，旨在实现简单并快速的事务提交与回滚。</p><h4 id="思想-amp-机制："><a href="#思想-amp-机制：" class="headerlink" title="思想&amp;机制："></a>思想&amp;机制：</h4><p>Fescar 是用于解决微服务架构中的事务问题。<br>我们知道一般解决微服务下的事务问题有以下几种解决思路</p><ol><li>2PC或者3PC，即两阶段提交、三阶段提交。</li><li>TCC -Try Confirm Cancel。</li><li>事务型MQ。</li></ol><p>而Fescar 虽然也是属于两阶段提交，但跟以上又有点不一样，Fescar是一种补偿性事务机制；它由以下三块组成：</p><ul><li>Transaction Coordinator(TC)：维护全局和分支事务的状态，驱动全局事务提交与回滚。</li><li>Transaction Manager(TM)：定义全局事务的范围：开始、提交或回滚全局事务。</li><li>Resource Manager(RM)：管理分支事务处理的资源，与TC通信以注册分支事务并报告分支事务的状态，并驱动分支事务提交或回滚。</li></ul><p><img src="https://thumbnail0.baidupcs.com/thumbnail/f55f04f6eh48fa890c6d64ae0f8d4169?fid=269699459-250528-167107243877936&time=1577710800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-F%2F7bhtX7tLwRfM9vXgFvAfyNgX8%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8439972494770383992&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt="图片"></p><p>Fescar管理分布式事务的典型生命周期：</p><ol><li>TM 要求 TC 开始新的全局事务，TC 生成表示全局事务的 XID。</li><li>XID 通过微服务的调用链传播。</li><li>RM 在 TC 中将本地事务注册为 XID 的相应全局事务的分支。</li><li>TM 要求 TC 提交或回滚 XID 的相应全局事务。</li><li>TC 驱动 XID 的相应全局事务下的所有分支事务，完成分支提交或回滚。</li></ol><p>TM和RM向TC注册，TM RPC调用RM生成日志并返回信息给TM，TM发送指令，全部提交或回滚。<br>使用nettry作为TM、RM与TC的通信服务器，进行指令的发送；TC目前是单机模式</p><p><strong>原理:</strong></br><br>&emsp;&emsp;Fescar通过控制Datasource、Connection、Prestatement、(insert\update\delete)Exector来控制整个数据的事务，通过扩展生成相应的代理，来保证整个过程的可控。在每个子事务的提交过程中，对每个事务语句都生产undolog保存在mysql中，undolog会记录提交前后的快照信息，以便后期回滚操作，因为是回滚快照，所以中间不得有其他事务对数据进行干扰；Fescar的每个分支事务会向总TC申请全局锁，锁的组成为表名+主键（相当于是行级锁了）以保证不同事务的隔离。这种隔离方式要求所有操作该记录的实例都必须使用Fescar，但是如果一个未使用Fescar的连接更新数据，导致快照和数据不一致呢？Fescar会报错，交给业务方TM自己处理</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;FESCAR（Fast &amp;amp; Easy Commit And Rollback） 是一个用于微服务架构的分布式事务解决方案，它的特点是高性能且易于使用，旨在实现简单并快速的事务提交与回滚。&lt;/p&gt;
+&lt;h4 id=&quot;思想-amp-机制：&quot;&gt;&lt;a href=&quot;#思想-am
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="原理" scheme="http://yoursite.com/tags/%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>函数取个好名字</title>
     <link href="http://yoursite.com/2019/12/29/%E5%87%BD%E6%95%B0%E5%8F%96%E4%B8%AA%E5%A5%BD%E5%90%8D%E5%AD%97/"/>
     <id>http://yoursite.com/2019/12/29/%E5%87%BD%E6%95%B0%E5%8F%96%E4%B8%AA%E5%A5%BD%E5%90%8D%E5%AD%97/</id>
     <published>2019-12-29T12:44:29.000Z</published>
-    <updated>2019-12-29T13:05:44.125Z</updated>
+    <updated>2019-12-30T13:30:11.494Z</updated>
     
     <content type="html"><![CDATA[<p>&emsp;&emsp;重构是个技术活，特别是取名字，一个好的名字可以省去很多注释代码，一个好的项目见名知意；所以这边搜罗了一些取名字的字典</p><h4 id="常用动词表"><a href="#常用动词表" class="headerlink" title="常用动词表"></a>常用动词表</h4><table><thead><tr><th>类别</th><th align="right">单词</th></tr></thead><tbody><tr><td>添加/插入/创建/初始化/加载</td><td align="right">add、append、insert、create、initialize、load</td></tr><tr><td>删除/销毁</td><td align="right">delete、remove、destroy、drop</td></tr><tr><td>打开/开始/启动</td><td align="right">open、start</td></tr><tr><td>关闭/停止</td><td align="right">close、stop</td></tr><tr><td>获取/读取/查找/查询</td><td align="right">get、fetch、acquire、read、search、find、query</td></tr><tr><td>设置/重置/放入/写入/释放/刷新</td><td align="right">set、reset、put、write、release、refresh</td></tr><tr><td>发送/推送</td><td align="right">send、push</td></tr><tr><td>接收/拉取</td><td align="right">receive、pull</td></tr><tr><td>提交/撤销/取消</td><td align="right">submit、cancel</td></tr><tr><td>收集/采集/选取/选择</td><td align="right">collect、pick、select</td></tr><tr><td>提取/解析</td><td align="right">sub、extract、parse</td></tr><tr><td>编码/解码</td><td align="right">encode、decode</td></tr><tr><td>填充/打包/压缩</td><td align="right">fill、pack、compress</td></tr><tr><td>清空/拆包/解压</td><td align="right">flush、clear、unpack、decompress</td></tr><tr><td>增加/减少</td><td align="right">increase、decrease、reduce</td></tr><tr><td>分隔/拼接</td><td align="right">split、join、concat</td></tr><tr><td>过滤/校验/检测/审核/通过</td><td align="right">filter、valid、check、audit、adopt</td></tr></tbody></table><h4 id="常用名词表"><a href="#常用名词表" class="headerlink" title="常用名词表"></a>常用名词表</h4><table><thead><tr><th>类别</th><th align="right">单词</th></tr></thead><tbody><tr><td>容量/大小/长度</td><td align="right">capacity、size、length</td></tr><tr><td>实例/上下文</td><td align="right">instance、context</td></tr><tr><td>配置</td><td align="right">config、settings</td></tr><tr><td>头部/前面/前一个/第一个</td><td align="right">header、front、previous、first</td></tr><tr><td>尾部/后面/后一个/最后一个</td><td align="right">tail、back、next、last</td></tr><tr><td>区间/区域/某一部分/范围/规模</td><td align="right">range、interval、region、area、section、scope、scale</td></tr><tr><td>缓存/缓冲/会话</td><td align="right">cache、buffer、session</td></tr><tr><td>本地/局部/全局</td><td align="right">local、global</td></tr><tr><td>成员/元素</td><td align="right">member、element</td></tr><tr><td>菜单/列表</td><td align="right">menu、list</td></tr><tr><td>源/目标</td><td align="right">source、destination、target</td></tr></tbody></table>]]></content>
     
@@ -36,7 +63,7 @@
     </summary>
     
     
-      <category term="JAVA" scheme="http://yoursite.com/categories/JAVA/"/>
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
       <category term="重构" scheme="http://yoursite.com/tags/%E9%87%8D%E6%9E%84/"/>
@@ -48,7 +75,7 @@
     <link href="http://yoursite.com/2019/12/29/%E5%8E%9F%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81/"/>
     <id>http://yoursite.com/2019/12/29/%E5%8E%9F%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81/</id>
     <published>2019-12-29T12:11:26.000Z</published>
-    <updated>2019-12-29T13:04:02.546Z</updated>
+    <updated>2019-12-30T13:30:18.186Z</updated>
     
     <content type="html"><![CDATA[<p>&emsp;&emsp;在计算机内部，所有的信息都是以二进制形式存在的，这最原始的二进制即为<strong>原码</strong><br>如整数 10 （int 占四个字节，一个字节为8个bit），在计算机内部二进制表示为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00000000 00000000 00000000 00001010.</span><br></pre></td></tr></table></figure><p>但是数字有正负，所以计算机约定，以最高位来标识正负，所以整数<code>-10</code>就表示为 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10000000 00000000 00000000 00001010.</span><br></pre></td></tr></table></figure><p>但是一个字节的取值范围不是<code>[-128,127]</code>吗？按这理论，应该是<code>[-127,127]</code>啊！这是用<code>-128</code> 代替了 <code>-0</code>(零只有一个嘛)。我们尝试使用二进制来进行数字的运算，如:<code>10+10</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    00000000 00000000 00000000 00001010</span><br><span class="line">+   00000000 00000000 00000000 00001010</span><br><span class="line">-----------------------------------------</span><br><span class="line">&#x3D;   00000000 00000000 00000000 00010100</span><br></pre></td></tr></table></figure><p>结果为<code>20(2^5+2^2)</code>，和预料的相符。<br>如果换成负数呢？我们知道，绝对值相等的正负数，他们的和等于零，<code>10+(-10)=0</code>，拿到计算机内部二级制表示为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    00000000 00000000 00000000 00001010</span><br><span class="line">+   10000000 00000000 00000000 00001010</span><br><span class="line">-----------------------------------------</span><br><span class="line">&#x3D;   10000000 00000000 00000000 00010100</span><br></pre></td></tr></table></figure><p>换算成十进制为<code>-20(2^5+2^2)</code>，显然，如果计算机这样计算的话就错了。所以科学家们想出来了另一种解决方法：站在计算机的角度，正数的加法是正确的，而正数加上一个负数却有问题。我们可以设置这样一个数和原码互补，这样两个互补的二进制之和就等于零了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    00000000 00000000 00000000 00001010</span><br><span class="line">+   11111111 11111111 11111111 11110110</span><br><span class="line">-----------------------------------------</span><br><span class="line">&#x3D;   00000000 00000000 00000000 00000000</span><br></pre></td></tr></table></figure><p>这样抛开溢出的一位，就和期望的0相符了。这里和原码形成互补关系的二进制我们称为<strong>补码</strong><br>使用几个运算证实下我们的结论</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-4 + (-7):</span><br><span class="line">4：00000000 00000000 00000000 00000100，</span><br><span class="line">7：00000000 00000000 00000000 00000111</span><br><span class="line">(-4补码)：11111111 11111111 11111111 11111100， </span><br><span class="line">(-7补码)：11111111 11111111 11111111 11111001</span><br><span class="line">11：00000000 00000000 00000000 00001011</span><br><span class="line">(-11补码)：11111111 11111111 11111111 11110101</span><br><span class="line"></span><br><span class="line">    11111111 11111111 11111111 11111100</span><br><span class="line">+   11111111 11111111 11111111 11111001</span><br><span class="line">-----------------------------------------</span><br><span class="line">&#x3D;   11111111 11111111 11111111 11110101</span><br></pre></td></tr></table></figure><p>所以我们的结论是可行的，补码和原码互为互补关系。<br>&emsp;&emsp;再次声明一下，所有的这些对于正数来说都是不需要的，正数的原码，反码，补码都是一样的。<br>&emsp;&emsp;那么反码是什么呢？反码比较好理解，就是对原码取反（符号为不变，其他值取反），如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-10</span><br><span class="line">10000000 00000000 00000000 00001010</span><br><span class="line">~(-10)</span><br><span class="line">11111111 11111111 11111111 11110101</span><br><span class="line">-11</span><br><span class="line">10000000 00000000 00000000 00010101</span><br><span class="line">~(-11)</span><br><span class="line">10000000 00000000 00000000 00001010</span><br></pre></td></tr></table></figure><p>这边我们可以发现个规律：补码 = 反码 + 1，你不信可以试试。</p>]]></content>
     
@@ -63,7 +90,7 @@
     </summary>
     
     
-      <category term="JAVA" scheme="http://yoursite.com/categories/JAVA/"/>
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
       <category term="原理" scheme="http://yoursite.com/tags/%E5%8E%9F%E7%90%86/"/>
