@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-30T14:08:24.817Z</updated>
+  <updated>2020-01-02T13:13:42.549Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java之BitSet</title>
+    <link href="http://yoursite.com/2020/01/02/Java%E4%B9%8BBitSet/"/>
+    <id>http://yoursite.com/2020/01/02/Java%E4%B9%8BBitSet/</id>
+    <published>2020-01-02T13:07:43.000Z</published>
+    <updated>2020-01-02T13:13:42.549Z</updated>
+    
+    <content type="html"><![CDATA[<p>BitSet通过位运算进行数据的标示，内部使用long数组进行存储，即64位bit。<br>有两个方法需要注意：</p><ol><li>size()：表示BitSet实际使用的空间数，如10100，占用空间数为3，（words=20，后面会讲）；</li><li>length()：表示BitSet空间大小，如10100，length=5；</li></ol><p>初始化BitSet时，会计算需要多少个long数组，64位以内可以使用一个words存。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BitSet</span><span class="params">(<span class="keyword">int</span> nbits)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// nbits can't be negative; size 0 is OK</span></span><br><span class="line">        <span class="keyword">if</span> (nbits &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NegativeArraySizeException(<span class="string">"nbits &lt; 0: "</span> + nbits);</span><br><span class="line">        initWords(nbits);</span><br><span class="line">        sizeIsSticky = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWords</span><span class="params">(<span class="keyword">int</span> nbits)</span> </span>&#123;</span><br><span class="line">        words = <span class="keyword">new</span> <span class="keyword">long</span>[wordIndex(nbits-<span class="number">1</span>) + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">wordIndex</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bitIndex &gt;&gt; <span class="number">6</span>;<span class="comment">//位运算，向右移动6位，小于64都是0</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>当设置一个bit位时，看这个数字在多少位，如2则第二位为1，即10，,3则第三位为1，即100，可见算法为<code>1&lt;&lt;n</code>(n为set参数)； 其中，<code>words</code>的值为`` words |= (1&lt;&lt;n)`，位或运算<br>如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BitSet bitSet &#x3D; new BitSet(64);</span><br><span class="line">bitSet.set(2, true);&#x2F;&#x2F; words &#x3D; 4(二进制：100），数组&#x3D;&#123;2&#125;</span><br><span class="line">bitSet.set(1, true);&#x2F;&#x2F; words &#x3D; 6(二进制：110），数组&#x3D;&#123;1,2&#125;</span><br><span class="line">bitSet.set(4, true);&#x2F;&#x2F; words &#x3D; 22(二进制：1110），数组&#x3D;&#123;1,2,4&#125;</span><br></pre></td></tr></table></figure><p>因此，可用BitSet进行排重，排序等</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;BitSet通过位运算进行数据的标示，内部使用long数组进行存储，即64位bit。&lt;br&gt;有两个方法需要注意：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;size()：表示BitSet实际使用的空间数，如10100，占用空间数为3，（words=20，后面会讲）；&lt;/li&gt;
+&lt;li&gt;le
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="源码" scheme="http://yoursite.com/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>Fescar 分布式框架原理</title>
