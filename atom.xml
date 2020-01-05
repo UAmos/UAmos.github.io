@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-02T13:13:42.549Z</updated>
+  <updated>2020-01-05T12:05:44.634Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,118 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>System.getProperty所拥有的属性</title>
+    <link href="http://yoursite.com/2020/01/05/System-getProperty%E6%89%80%E6%8B%A5%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7/"/>
+    <id>http://yoursite.com/2020/01/05/System-getProperty%E6%89%80%E6%8B%A5%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7/</id>
+    <published>2020-01-05T12:04:42.000Z</published>
+    <updated>2020-01-05T12:05:44.634Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">java.version Java 运行时环境版本</span><br><span class="line">java.vendor Java 运行时环境供应商</span><br><span class="line">java.vendor.url Java 供应商的 URL</span><br><span class="line">java.home Java 安装目录</span><br><span class="line">java.vm.specification.version Java 虚拟机规范版本</span><br><span class="line">java.vm.specification.vendor Java 虚拟机规范供应商</span><br><span class="line">java.vm.specification.name Java 虚拟机规范名称</span><br><span class="line">java.vm.version Java 虚拟机实现版本</span><br><span class="line">java.vm.vendor Java 虚拟机实现供应商</span><br><span class="line">java.vm.name Java 虚拟机实现名称</span><br><span class="line">java.specification.version Java 运行时环境规范版本</span><br><span class="line">java.specification.vendor Java 运行时环境规范供应商</span><br><span class="line">java.specification.name Java 运行时环境规范名称</span><br><span class="line">java.class.version Java 类格式版本号</span><br><span class="line">java.class.path Java 类路径</span><br><span class="line">java.library.path 加载库时搜索的路径列表</span><br><span class="line">java.io.tmpdir 默认的临时文件路径</span><br><span class="line">java.compiler 要使用的 JIT 编译器的名称</span><br><span class="line">java.ext.dirs 一个或多个扩展目录的路径</span><br><span class="line">os.name 操作系统的名称</span><br><span class="line">os.arch 操作系统的架构</span><br><span class="line">os.version 操作系统的版本</span><br><span class="line">file.separator 文件分隔符（在 UNIX 系统中是“&#x2F;”）</span><br><span class="line">path.separator 路径分隔符（在 UNIX 系统中是“:”）</span><br><span class="line">line.separator 行分隔符（在 UNIX 系统中是“&#x2F;n”）</span><br><span class="line">user.name 用户的账户名称</span><br><span class="line">user.home 用户的主目录</span><br><span class="line">user.dir 用户的当前工作目录</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java8 根据属性值去重</title>
+    <link href="http://yoursite.com/2020/01/05/Java8-%E6%A0%B9%E6%8D%AE%E5%B1%9E%E6%80%A7%E5%80%BC%E5%8E%BB%E9%87%8D/"/>
+    <id>http://yoursite.com/2020/01/05/Java8-%E6%A0%B9%E6%8D%AE%E5%B1%9E%E6%80%A7%E5%80%BC%E5%8E%BB%E9%87%8D/</id>
+    <published>2020-01-05T11:57:15.000Z</published>
+    <updated>2020-01-05T12:03:04.320Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Predicate&lt;T&gt; <span class="title">distinctByKey</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, Object&gt; keyExtractor)</span> </span>&#123;</span><br><span class="line">        Map&lt;Object, Boolean&gt; seen = <span class="keyword">new</span> ConcurrentHashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">return</span> object -&gt; seen.putIfAbsent(keyExtractor.apply(object), Boolean.TRUE) == <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="代码片段" scheme="http://yoursite.com/tags/%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker启动Hadoop报错</title>
+    <link href="http://yoursite.com/2020/01/05/Docker%E5%90%AF%E5%8A%A8Hadoop%E6%8A%A5%E9%94%99/"/>
+    <id>http://yoursite.com/2020/01/05/Docker%E5%90%AF%E5%8A%A8Hadoop%E6%8A%A5%E9%94%99/</id>
+    <published>2020-01-05T11:51:44.000Z</published>
+    <updated>2020-01-05T11:56:13.776Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用docker启动hadoop时，报以下错误</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[xhw@192 ~]$ docker run -p9000:9000 -it sequenceiq/hadoop-docker:latest -bash</span><br><span class="line">WARNING: IPv4 forwarding is disabled. Networking will not work.</span><br><span class="line">docker: Error response from daemon: driver failed programming external connectivity on endpoint hungry_neumann (b5668ce9501b598dbe879cac6353831964cc073997305f7d16376a3abb840de7):  (iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 9000 -j DNAT --to-destination 172.17.0.2:9000 ! -i docker0: iptables: No chain/target/match by that name.</span><br><span class="line"> (exit status 1)).</span><br></pre></td></tr></table></figure><p>原因：<code>docker</code> 服务启动的时候，<code>docker</code>服务会向<code>iptables</code>注册一个链，以便让<code>docker</code>服务管理的<code>containner</code>所暴露的端口之间进行通信，通过命令<code>iptables -L</code>可以查看<code>iptables</code> 链<br>报这个错应该是iptables被改变或者什么的，所以只要重启docker服务，重新加载iptable链即可</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[xhw@192 ~]$ service docker restart</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;使用docker启动hadoop时，报以下错误&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+    
+      <category term="容器" scheme="http://yoursite.com/categories/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="经验" scheme="http://yoursite.com/tags/%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下SonarQube搭建</title>
+    <link href="http://yoursite.com/2020/01/03/Linux%E4%B8%8BSonarQube%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2020/01/03/Linux%E4%B8%8BSonarQube%E6%90%AD%E5%BB%BA/</id>
+    <published>2020-01-03T13:37:32.000Z</published>
+    <updated>2020-01-05T11:44:03.700Z</updated>
+    
+    <content type="html"><![CDATA[<p>SonarQube支持多种语言的检测，内部使用了ElasticSearch用于搜索。<br><font color=red>注意：ElasticSearch不能使用root用户启动，所以需要使用其他用户。</font><br>以下在Centos下搭建SonarQube步骤</p><ol><li>安装JDK1.8，高级版本的SonarQube使用的JDK1.8，安装Centos是会可以选择自动安装。</li><li>可以新建一个目录存放下载的SonarQube压缩文件，这边下载的是7.2.1版本。</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[xhw@192 ~]$ wget https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-7.2.1.zip</span><br></pre></td></tr></table></figure><ol start="3"><li><p>解压下载的zip文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[xhw@192 ~]$ unzip sonarqube-7.2.1.zip</span><br></pre></td></tr></table></figure></li><li><p>安装中文插件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xhw@192 ~]$ cd sonarqube-7.2.1/extensions/plugins</span><br><span class="line">[xhw@192 plugins]$ wget https://github.com/SonarQubeCommunity/sonar-l10n-zh/releases/download/sonar-l10n-zh-plugin-1.22/sonar-l10n-zh-plugin-1.22.jar</span><br></pre></td></tr></table></figure></li><li><p>使用mysql数据存储数据，先建sonar数据库，然后修改<code>sonar.properties</code>。mysql版本应大于5.5小于8<br><em>（编辑时意外退出会出现swap文件，使用：ll -a 显示然后删除即可）<br>mysql用户如果要支持远程登录的，需要将用户表的host改为%，并刷新。</em></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> mysql.user;</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">PRIVILEGES</span>;</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[xhw@192 ~]$ cd sonarqube-7.2.1/conf/</span><br><span class="line">[xhw@192 conf]$ vim sonar.properties </span><br><span class="line">sonar.jdbc.username=root</span><br><span class="line">sonar.jdbc.password=root</span><br><span class="line">sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance&amp;useSSL=false</span><br></pre></td></tr></table></figure></li><li><p>启动sonar（有时候第二次以上启动会启动失败，应删除tmp和logs文件夹就可以了）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[xhw@192 ~]$ cd sonarqube-7.2.1/bin/linux-x86-64/</span><br><span class="line">[xhw@192 linux-x86-64]$ ./sonar.sh start</span><br><span class="line">[xhw@192 linux-x86-64]$ ./sonar.sh stop  ##停止服务</span><br></pre></td></tr></table></figure></li></ol><h4 id="MySql：下载安装"><a href="#MySql：下载安装" class="headerlink" title="MySql：下载安装"></a>MySql：下载安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;installer&#x2F;</span><br><span class="line">https:&#x2F;&#x2F;cdn.mysql.com&#x2F;&#x2F;Downloads&#x2F;MySQLInstaller&#x2F;mysql-installer-community-5.7.22.1.msi</span><br></pre></td></tr></table></figure><h3 id="基于maven进行代码检查"><a href="#基于maven进行代码检查" class="headerlink" title="基于maven进行代码检查"></a>基于maven进行代码检查</h3><ol><li>maven的setting.xml文件加入profile<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pluginGroup</span>&gt;</span>org.sonarsource.scanner.maven<span class="tag">&lt;/<span class="name">pluginGroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonar<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置 Sonar Host地址，默认：http://localhost:9000 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">sonar.host.url</span>&gt;</span></span><br><span class="line">                  http://localhost:9000</span><br><span class="line">                <span class="tag">&lt;/<span class="name">sonar.host.url</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li>pom.xml文件加入插件<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonarsource.scanner.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sonar-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0.603<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;SonarQube支持多种语言的检测，内部使用了ElasticSearch用于搜索。&lt;br&gt;&lt;font color=red&gt;注意：ElasticSearch不能使用root用户启动，所以需要使用其他用户。&lt;/font&gt;&lt;br&gt;以下在Centos下搭建SonarQube步骤&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="安装" scheme="http://yoursite.com/categories/%E5%AE%89%E8%A3%85/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="SonarQube" scheme="http://yoursite.com/tags/SonarQube/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java之BitSet</title>
     <link href="http://yoursite.com/2020/01/02/Java%E4%B9%8BBitSet/"/>
     <id>http://yoursite.com/2020/01/02/Java%E4%B9%8BBitSet/</id>
     <published>2020-01-02T13:07:43.000Z</published>
-    <updated>2020-01-02T13:13:42.549Z</updated>
+    <updated>2020-01-02T13:16:34.806Z</updated>
     
-    <content type="html"><![CDATA[<p>BitSet通过位运算进行数据的标示，内部使用long数组进行存储，即64位bit。<br>有两个方法需要注意：</p><ol><li>size()：表示BitSet实际使用的空间数，如10100，占用空间数为3，（words=20，后面会讲）；</li><li>length()：表示BitSet空间大小，如10100，length=5；</li></ol><p>初始化BitSet时，会计算需要多少个long数组，64位以内可以使用一个words存。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BitSet</span><span class="params">(<span class="keyword">int</span> nbits)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// nbits can't be negative; size 0 is OK</span></span><br><span class="line">        <span class="keyword">if</span> (nbits &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NegativeArraySizeException(<span class="string">"nbits &lt; 0: "</span> + nbits);</span><br><span class="line">        initWords(nbits);</span><br><span class="line">        sizeIsSticky = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWords</span><span class="params">(<span class="keyword">int</span> nbits)</span> </span>&#123;</span><br><span class="line">        words = <span class="keyword">new</span> <span class="keyword">long</span>[wordIndex(nbits-<span class="number">1</span>) + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">wordIndex</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bitIndex &gt;&gt; <span class="number">6</span>;<span class="comment">//位运算，向右移动6位，小于64都是0</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>当设置一个bit位时，看这个数字在多少位，如2则第二位为1，即10，,3则第三位为1，即100，可见算法为<code>1&lt;&lt;n</code>(n为set参数)； 其中，<code>words</code>的值为`` words |= (1&lt;&lt;n)`，位或运算<br>如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BitSet bitSet &#x3D; new BitSet(64);</span><br><span class="line">bitSet.set(2, true);&#x2F;&#x2F; words &#x3D; 4(二进制：100），数组&#x3D;&#123;2&#125;</span><br><span class="line">bitSet.set(1, true);&#x2F;&#x2F; words &#x3D; 6(二进制：110），数组&#x3D;&#123;1,2&#125;</span><br><span class="line">bitSet.set(4, true);&#x2F;&#x2F; words &#x3D; 22(二进制：1110），数组&#x3D;&#123;1,2,4&#125;</span><br></pre></td></tr></table></figure><p>因此，可用BitSet进行排重，排序等</p>]]></content>
+    <content type="html"><![CDATA[<p>BitSet通过位运算进行数据的标示，内部使用long数组进行存储，即64位bit。<br>有两个方法需要注意：</p><ol><li>size()：表示BitSet实际使用的空间数，如10100，占用空间数为3，（words=20，后面会讲）；</li><li>length()：表示BitSet空间大小，如10100，length=5；</li></ol><p>初始化BitSet时，会计算需要多少个long数组，64位以内可以使用一个words存。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BitSet</span><span class="params">(<span class="keyword">int</span> nbits)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// nbits can't be negative; size 0 is OK</span></span><br><span class="line">        <span class="keyword">if</span> (nbits &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NegativeArraySizeException(<span class="string">"nbits &lt; 0: "</span> + nbits);</span><br><span class="line">        initWords(nbits);</span><br><span class="line">        sizeIsSticky = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWords</span><span class="params">(<span class="keyword">int</span> nbits)</span> </span>&#123;</span><br><span class="line">        words = <span class="keyword">new</span> <span class="keyword">long</span>[wordIndex(nbits-<span class="number">1</span>) + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">wordIndex</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bitIndex &gt;&gt; <span class="number">6</span>;<span class="comment">//位运算，向右移动6位，小于64都是0</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>当设置一个bit位时，看这个数字在多少位，如2则第二位为1，即10，,3则第三位为1，即100，可见算法为<code>1&lt;&lt;n</code>(n为set参数)； 其中，<code>words</code>的值为<code>words |= (1&lt;&lt;n)</code>，位或运算<br>如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BitSet bitSet &#x3D; new BitSet(64);</span><br><span class="line">bitSet.set(2, true);&#x2F;&#x2F; words &#x3D; 4(二进制：100），数组&#x3D;&#123;2&#125;</span><br><span class="line">bitSet.set(1, true);&#x2F;&#x2F; words &#x3D; 6(二进制：110），数组&#x3D;&#123;1,2&#125;</span><br><span class="line">bitSet.set(4, true);&#x2F;&#x2F; words &#x3D; 22(二进制：1110），数组&#x3D;&#123;1,2,4&#125;</span><br></pre></td></tr></table></figure><p>因此，可用BitSet进行排重，排序等</p>]]></content>
     
     <summary type="html">
     
@@ -131,7 +236,7 @@
     <link href="http://yoursite.com/2019/12/28/hello-world/"/>
     <id>http://yoursite.com/2019/12/28/hello-world/</id>
     <published>2019-12-28T12:22:45.895Z</published>
-    <updated>2019-12-29T08:50:00.592Z</updated>
+    <updated>2020-01-05T11:52:48.926Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
@@ -147,8 +252,6 @@
     
       <category term="建站" scheme="http://yoursite.com/categories/%E5%BB%BA%E7%AB%99/"/>
     
-    
-      <category term="初始化" scheme="http://yoursite.com/tags/%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
     
   </entry>
   
